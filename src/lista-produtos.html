@@ -1,9 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item-body.html">
 
 <dom-module id="lista-produtos">
 
@@ -13,31 +14,22 @@
                 display: block;
                 padding: 16px;
             }
-             .cyan {
-            background: var(--paper-cyan-500);
-            }
-            paper-card.cyan {
-            color: white;
-            --paper-card-header-color: white;
-            }
-            paper-icon-button.pink {
-                color: var(--paper-pink-500);
-                --paper-icon-button-ink-color: var(--paper-indigo-500);
-            }
         </style>
         <iron-ajax
             auto
             url="http://localhost:57995/api/Produtos/"
             handle-as="json"
             last-response="{{response}}"></iron-ajax>
+            <paper-listbox>
             <template is="dom-repeat" items="{{response}}">
-                <paper-card heading="{{item.Nome}}" class="cyan">
-                    <div class="card-actions">
-                    <paper-icon-button icon="favorite" class="pink"></paper-icon-button>
-                    <span>R$ {{item.Preco}}</span>
-                    </div>
-                </paper-card>
+                <paper-icon-item>
+                    <paper-item-body two-line>
+                        <div>{{item.Nome}}</div> 
+                        <div secondary>R$ {{item.Preco}}</div>
+                    </paper-item-body>
+                </paper-icon-item>
             </template>
+            </paper-listbox>
     </template>
     <script>
             Polymer({
@@ -48,3 +40,4 @@
             });
     </script>
 </dom-module>
+

@@ -85,7 +85,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>Boa a Bessa App</div>
+            <div title>[[titulo]]</div>
           </app-toolbar>
         </app-header>
 
@@ -106,7 +106,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-app',
 
       properties: {
-
+        titulo:{
+          type: String,
+          notify: true
+        },
+        
         page: {
           type: String,
           reflectToAttribute: true,
@@ -120,7 +124,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'viewprodutos';
       },
 
       _pageChanged: function(page) {
